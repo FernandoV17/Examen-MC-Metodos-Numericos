@@ -1,4 +1,3 @@
-import math
 import matplotlib.pyplot as plt
 
 n = 16
@@ -11,12 +10,10 @@ c = [0] * (n + 1)
 b = [0] * n
 a = [0] * n
 
-# Almacenar los polinomios cúbicos en forma de texto
 polinomios = []
 
 def imprimir_polinomios():
     for i in range(n - 1):
-        # Mostrar el polinomio en el intervalo [x_i, x_{i+1}]
         polinomio = f"S_{i}(x) = {a[i]} + {b[i]}*(x - {x[i]}) + {c[i]}*(x - {x[i]})^2 + {d[i]}*(x - {x[i]})^3"
         print(polinomio)
         polinomios.append(polinomio)
@@ -53,29 +50,21 @@ def graficar_trazadores(numeros, valores):
         ]
         plt.plot(x_range, y_range, label=f"S_{i}(x)")
     
-    # Graficar los puntos originales
     plt.scatter(numeros, valores, color='red', zorder=5, label="Puntos originales")
     plt.xlabel("x")
     plt.ylabel("y")
     plt.legend()
     plt.title("Trazadores cúbicos")
     plt.grid(True)
-    # Guardar la gráfica en un archivo en lugar de mostrarla
     plt.savefig('trazadores_cubicos.png')
     print("\nLa gráfica ha sido guardada como 'trazadores_cubicos.png'.")
 
 def main():
     global x, y, d
-    x = [0.5671103861938, 1.234794275492, 1.8882721245922, 2.5701620540882, 
-         3.2378459433863, 4.2606808376302, 4.60342404572, 4.9904228068154, 
-         5.2881141615042, 5.3774215679108, 5.6751129225995, 6.0521886385386, 
-         6.4788795802592, 6.8758013865109, 7.1238775154182, 7.2131849218248]
-    y = [2.2999410712407, 2.9250068399453, 3.4080122066716, 3.7631632116174,
-         3.9194296537935, 3.6637209302326, 3.7212369857068, 3.7013908953942, 
-         3.4433917213306, 3.0167007796101, 2.7686246507028, 2.5800867927332, 
-         2.4213180702326, 2.2228571671067, 2.0442423542935, 1.3198600578841]
+    x = [3.31, 7.05, 10.17, 13.16, 16, 18.75, 20.69, 22.62, 25.31, 26.89, 27.82, 30.06, 31.34, 33.14, 34.9, 38.51, 41.77, 45.24, 48.45]
+    y = [4.38, 5.97, 7.46, 8.25, 10, 11.07, 10.63, 10.15, 12.57, 10.59, 12.26, 10.59, 11.16, 10.32, 9.13, 8.61, 6.8, 5.26, 4.29]
     
-    d = [0] * n  # Asegurarse de que d esté definido y tenga el tamaño correcto
+    d = [0] * n
 
     print("Trazador natural")
     trazador_natural(x, y)
