@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-n = 16
+n = 20
 h = [0] * n
 alpha = [0] * n
 l = [0] * n
