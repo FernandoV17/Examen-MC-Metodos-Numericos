@@ -14,7 +14,6 @@ Este código fue escrito en Python y utiliza bibliotecas como `matplotlib` para 
 ## Archivos
 
 - `main.py`: Archivo principal que contiene la implementación del spline cúbico.
-- `resultados_trazadores.xlsx`: Archivo que se genera tras la ejecución del código, que contiene los coeficientes de los polinomios para cada spline, tanto para el método natural como para el sujeto.
 - `README.md`: Este archivo de documentación.
 
 ## Requisitos
