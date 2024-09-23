@@ -1,5 +1,3 @@
-import matplotlib
-matplotlib.use('TkAgg') 
 import matplotlib.pyplot as plt
 
 # Datos
@@ -37,19 +35,12 @@ def trazador_natural():
         z[i] = (alpha[i - 1] - (h[i - 1] * z[i - 1])) / l[i]
     
     c[n - 1] = 0
-    print("\nTrazador Natural:")
-    print(f"{'i':<5} {'a':<10} {'b':<15} {'c':<15} {'d':<15} {'Ecuación'}")
-    print("="*70)
-    
-    for i in range(1, n):
+    for i in range(n - 1, 0, -1):
         c[i] = z[i] - (u[i] * c[i + 1]) if i < n - 1 else 0
         b[i] = (y[i] - y[i - 1]) / h[i] - (h[i] * (c[i + 1] + 2 * c[i])) / 3
         d[i] = (c[i + 1] - c[i]) / (3 * h[i])
         a[i] = y[i - 1]
-        
-        ecuacion = f"S_{i-1}(x) = {a[i]} + {b[i]}*(x - {x[i-1]}) + {c[i]}*(x - {x[i-1]})^2 + {d[i]}*(x - {x[i-1]})^3"
-        
-        print(f"{i:<5} {a[i]:<10} {b[i]:<15} {c[i]:<15} {d[i]:<15} {ecuacion}")
+        print(f"a[{i}] = {a[i]},\t\tb[{i}] = {b[i]},\t\tc[{i}] = {c[i]},\t\td[{i}] = {d[i]}")
 
 def trazador_sujeto(dx_y0, dx_yn):
     global h, alpha, l, u, z, c, b, a, d
@@ -64,10 +55,6 @@ def trazador_sujeto(dx_y0, dx_yn):
         alpha[i] = (3 * (y[i + 1] - y[i]) / h[i + 1]) - (3 * (y[i] - y[i - 1]) / h[i])
     
     l[0], u[0], z[0] = 2 * h[1], 0.5, alpha[0] / l[0]
-    print("\nTrazador Sujeto:")
-    print(f"{'i':<5} {'a':<10} {'b':<15} {'c':<15} {'d':<15} {'Ecuación'}")
-    print("="*70)
-    
     for i in range(1, n):
         l[i] = 2 * (x[i] - x[i - 2]) - (h[i - 1] * u[i - 1])
         u[i] = h[i] / l[i]
@@ -79,18 +66,19 @@ def trazador_sujeto(dx_y0, dx_yn):
         b[i] = (y[i] - y[i - 1]) / h[i] - (h[i] * (c[i + 1] + 2 * c[i])) / 3
         d[i] = (c[i + 1] - c[i]) / (3 * h[i])
         a[i] = y[i - 1]
-        
-        ecuacion = f"S_{i-1}(x) = {a[i]} + {b[i]}*(x - {x[i-1]}) + {c[i]}*(x - {x[i-1]})^2 + {d[i]}*(x - {x[i-1]})^3"
-        
-        print(f"{i:<5} {a[i]:<10} {b[i]:<15} {c[i]:<15} {d[i]:<15} {ecuacion}")
+        print(f"a[{i}] = {a[i]},\t\tb[{i}] = {b[i]},\t\tc[{i}] = {c[i]},\t\td[{i}] = {d[i]}")
 
 def main():
     dx_y0 = (y[1] - y[0]) / (x[1] - x[0])
     dx_yn = (y[-1] - y[-2]) / (x[-1] - x[-2])
     
+    print("Trazador natural")
     trazador_natural()
+    
+    print("\nTrazador Sujeto")
     trazador_sujeto(dx_y0, dx_yn)
 
+    plt.figure(figsize=(10, 6))
     plt.plot(x, y, 'o', label='Datos Originales')
     
     for i in range(1, n):
