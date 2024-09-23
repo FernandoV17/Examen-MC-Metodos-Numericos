@@ -21,6 +21,8 @@ Este código fue escrito en Python y utiliza bibliotecas como `matplotlib` para 
 Para ejecutar el código, es necesario contar con las siguientes bibliotecas de Python:
 
 - `matplotlib`
+- `numpy`
+- `scipy`
 
 Puedes instalar las dependencias ejecutando:
 
@@ -31,7 +33,7 @@ pip install -r requirements.txt
 O bien, puedes instalarlas manualmente:
 
 ```bash
-pip install matplotlib 
+pip install matplotlib numpy scipy
 ```
 
 ## Uso
