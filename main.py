@@ -91,12 +91,12 @@ def main():
     trazador_natural()
     trazador_sujeto(dx_y0, dx_yn)
 
-    plt.plot(x, y, 'o', label='Datos Originales')
+    plt.plot(x, y, 'o')
     
     for i in range(1, n):
         xs = [x[i-1] + (j / 100.0) * (x[i] - x[i-1]) for j in range(101)]
         ys = [a[i] + b[i] * (xi - x[i-1]) + c[i] * (xi - x[i-1])**2 + d[i] * (xi - x[i-1])**3 for xi in xs]
-        plt.plot(xs, ys, label=f'Trazador {i}')
+        plt.plot(xs, ys)
 
     plt.title('Trazador Natural y Trazador Sujeto')
     plt.xlabel('X')
