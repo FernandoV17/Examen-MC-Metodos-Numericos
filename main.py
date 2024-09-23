@@ -3,7 +3,6 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import pandas as pd  
 
-# Datos
 x = [3.31, 7.05, 10.17, 13.16, 16, 18.75, 20.69, 22.62, 25.31, 26.89, 27.82, 30.06, 31.34, 33.14, 34.9, 38.51, 41.77, 45.24, 48.45]
 y = [4.38, 5.97, 7.46, 8.25, 10, 11.07, 10.63, 10.15, 12.57, 10.59, 12.26, 10.59, 11.16, 10.32, 9.13, 8.61, 6.8, 5.26, 4.29]
 n = len(x)
@@ -87,7 +86,6 @@ def trazador_sujeto(dx_y0, dx_yn):
         d[i] = (c[i + 1] - c[i]) / (3 * h[i])
         a[i] = y[i - 1]
         
-        # Formatear la ecuación
         ecuacion = f"S_{i-1}(x) = {a[i]} + {b[i]}*(x - {x[i-1]}) + {c[i]}*(x - {x[i-1]})^2 + {d[i]}*(x - {x[i-1]})^3"
         
         print(f"{i:<5} {a[i]:<10} {b[i]:<15} {c[i]:<15} {d[i]:<15} {ecuacion}")
